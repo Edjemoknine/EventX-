@@ -10,12 +10,14 @@ const NavItems = () => {
       {headerLinks.map((link) => {
         const isActive = pathname === link.href;
         return (
-          <Link
-            className={`${isActive && "text-blue-600 "} hover:text-blue-600`}
-            href={link.href}
-          >
-            {link.label}
-          </Link>
+          <li key={link.href}>
+            <Link
+              className={`${isActive && "text-blue-600 "} hover:text-blue-600`}
+              href={link.href}
+            >
+              {link.label}
+            </Link>
+          </li>
         );
       })}
     </ul>
