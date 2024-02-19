@@ -11,7 +11,7 @@ const Header = () => {
     <div className="w-full border-b">
       <div className="wrapper flex justify-between items-center">
         <Link className="flex gap-1 items-center" href={"/"}>
-          <Image src={"logo.svg"} width={40} height={24} alt="logo" />
+          <Image src={"/logo.svg"} width={40} height={24} alt="logo" />
           <span className="font-semibold text-xl">EventX</span>
         </Link>
         <SignedIn>
@@ -21,7 +21,7 @@ const Header = () => {
         </SignedIn>
         <div className="flex justify-end gap-3">
           <SignedIn>
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
             <MobileNav />
           </SignedIn>
           <SignedOut>

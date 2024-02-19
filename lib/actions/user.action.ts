@@ -8,6 +8,7 @@ import { revalidatePath } from "next/cache";
 import Order from "../database/schema/order.model";
 
 export async function createUser(user: CreateUserType) {
+  console.log(user);
   try {
     await connectToDatabase();
 

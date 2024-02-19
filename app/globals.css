@@ -6,6 +6,32 @@
   .wrapper {
     @apply max-w-6xl lg:mx-auto p-5 md:px-10 xl:px-0 w-full;
   }
+  .p-regular-16 {
+    @apply text-[16px] font-normal leading-[24px];
+  }
+  .select-field {
+    @apply w-full bg-slate-100 h-[54px] placeholder:text-slate-500 rounded-full p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent focus:ring-transparent !important;
+  }
+
+  .input-field {
+    @apply bg-slate-100 h-[54px] focus-visible:ring-offset-0 placeholder:text-slate-500 rounded-full p-regular-16 px-4 py-3 border-none focus-visible:ring-transparent !important;
+  }
+
+  .textarea {
+    @apply bg-slate-100 flex flex-1 placeholder:text-slate-500 p-regular-16 px-5 py-3 border-none focus-visible:ring-transparent !important;
+  }
+
+  .button {
+    @apply rounded-full h-[54px] p-regular-16;
+  }
+
+  .select-item {
+    @apply py-3 cursor-pointer  focus:bg-primary-50;
+  }
+
+  .toggle-switch {
+    @apply bg-gray-300 !important;
+  }
 }
 
 @layer base {
@@ -62,4 +88,25 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.datePicker {
+  width: 100%;
+}
+
+.react-datepicker__input-container input {
+  background-color: transparent;
+  width: 100%;
+  outline: none;
+  margin-left: 16px;
+}
+
+.react-datepicker__day--selected {
+  background-color: #1874fe !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #1874fe !important;
 }
