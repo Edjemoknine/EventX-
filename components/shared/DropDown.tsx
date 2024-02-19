@@ -1,5 +1,5 @@
 "use client";
-import { useState, startTransition } from "react";
+import { useState, startTransition, useEffect } from "react";
 import {
   Select,
   SelectContent,
@@ -20,6 +20,10 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Input } from "../ui/input";
+import {
+  createCategory,
+  getAllCategories,
+} from "@/lib/actions/category.actions";
 
 type DropType = {
   value?: string;
@@ -29,7 +33,21 @@ type DropType = {
 const DropDown = ({ onchangeHandler, value }: DropType) => {
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [newCategory, setNewCategory] = useState("");
-  const handleAddCategory = () => {};
+
+  const handleAddCategory = () => {
+    createCategory({ categoryName: newCategory.trim() }).then((category) =>
+      setCategories((prev) => [...prev, category])
+    );
+  };
+
+  useEffect(() => {
+    const getCategories = async () => {
+      const categoriesList = await getAllCategories();
+      categoriesList && setCategories(categoriesList);
+    };
+    getCategories();
+  }, []);
+
   return (
     <Select onValueChange={onchangeHandler} defaultValue={value}>
       <SelectTrigger className="select-field">
