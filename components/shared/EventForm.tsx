@@ -57,13 +57,12 @@ const EventForm = ({ userId, type }: FormProps) => {
 
         if (newEvent) {
           form.reset();
-          Router.push("/profile");
+          Router.push(`/events/${newEvent._id}`);
         }
       } catch (error) {
         console.log(error);
       }
     }
-    console.log(values);
   }
 
   return (
