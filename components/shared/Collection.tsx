@@ -9,13 +9,14 @@ type CollectionProps = {
   limit: number;
   page: number;
   total?: number;
-  urlParams: string;
+  urlPramasName: string;
 };
 const Collection = ({
   data,
   emptyTitle,
   emptyStateSubtext,
   collectionType,
+  urlPramasName,
   limit,
   page,
   total,

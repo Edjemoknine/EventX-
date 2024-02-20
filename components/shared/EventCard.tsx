@@ -37,16 +37,16 @@ const EventCard = ({ event, hasOrderLink, hidePrice }: CardProps) => {
         href={`/events/${event._id}`}
         className="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4"
       >
-        {/* {hidePrice && ( */}
-        <div className="flex gap-2">
-          <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-600">
-            {event.isFree ? "FREE" : `$${event.price}`}
-          </span>
-          <p className="p-semibold-14 px-4 py-1 w-min rounded-full bg-gray-500/10 text-gray-500">
-            {event.category.name}
-          </p>
-        </div>
-        {/* )} */}
+        {hidePrice && (
+          <div className="flex gap-2">
+            <span className="p-semibold-14 w-min rounded-full bg-green-100 px-4 py-1 text-green-600">
+              {event.isFree ? "FREE" : `$${event.price}`}
+            </span>
+            <p className="p-semibold-14 px-4 py-1 w-min rounded-full bg-gray-500/10 text-gray-500">
+              {event.category.name}
+            </p>
+          </div>
+        )}
         <p className="p-medium-16 text-gray-500 ">
           {formatDateTime(event.startDateTime).dateTime}
         </p>
