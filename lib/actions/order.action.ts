@@ -1,8 +1,9 @@
 "use server";
 
-import { CheckoutOrderParams } from "@/types";
+import { CheckoutOrderParams, CreateOrderParams } from "@/types";
 import Stripe from "stripe";
-import { redirect } from "next/navigation";
+import { connectToDatabase } from "../database";
+import Order from "../database/schema/order.model";
 
 export const checkoutOrder = async (order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
@@ -33,5 +34,20 @@ export const checkoutOrder = async (order: CheckoutOrderParams) => {
     return session.url;
   } catch (error) {
     console.error(error);
+  }
+};
+
+export const createOrder = async (order: CreateOrderParams) => {
+  try {
+    await connectToDatabase();
+    const newOrder = await Order.create({
+      ...order,
+      event: order.eventId,
+      buyer: order.buyerId,
+    });
+
+    return JSON.parse(JSON.stringify(newOrder));
+  } catch (error) {
+    console.log(error);
   }
 };
