@@ -270,7 +270,7 @@ const EventForm = ({ userId, type, event, eventId }: FormProps) => {
                               <Checkbox
                                 className="h-5 w-5 border-2"
                                 onCheckedChange={field.onChange}
-                                value={field.value}
+                                checked={field.value}
                               />
                             </div>
                           </FormControl>
