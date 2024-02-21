@@ -1,14 +1,21 @@
+import Category from "@/components/shared/Category";
 import Collection from "@/components/shared/Collection";
+import Search from "@/components/shared/Search";
 import { Button } from "@/components/ui/button";
 import { getAllEvents } from "@/lib/actions/event.action";
+import { SearchParamProps } from "@/types";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function Home() {
+export default async function Home({ searchParams }: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1;
+  const query = (searchParams?.query as string) || "";
+  const category = (searchParams?.category as string) || "";
+
   const events = await getAllEvents({
-    query: "",
-    category: "",
-    page: 1,
+    query: query,
+    category: category,
+    page: page,
     limit: 6,
   });
 
@@ -46,7 +53,10 @@ export default async function Home() {
         <h2 className="font-bold text-[32px] leading-[40px] lg:text-[36px] lg:leading-[44px] xl:text-[40px] xl:leading-[48px]">
           Trust by <br /> Thousands of Events
         </h2>
-        <div className="flex flex-col w-full md:flex-row gap-6">search gap</div>
+        <div className="flex flex-col w-full md:flex-row gap-6">
+          <Search placeholder="Search" />
+          <Category />
+        </div>
         <Collection
           data={events?.data}
           emptyTitle="No Events Found"

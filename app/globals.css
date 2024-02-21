@@ -123,7 +123,7 @@
   }
 
   .select-item {
-    @apply py-3 cursor-pointer  focus:bg-primary-50;
+    @apply py-3 cursor-pointer;
   }
 
   .toggle-switch {
