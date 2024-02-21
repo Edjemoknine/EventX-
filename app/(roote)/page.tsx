@@ -19,7 +19,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
     limit: 6,
   });
 
-  console.log({ events });
+  // console.log({ events });
   return (
     <>
       <section className=" bg-slate-100  py-5 md:py-10">
@@ -64,7 +64,7 @@ export default async function Home({ searchParams }: SearchParamProps) {
           collectionType="All_Events"
           limit={6}
           page={1}
-          total={2}
+          total={events?.totalPages}
           urlPramasName=""
         />
       </section>

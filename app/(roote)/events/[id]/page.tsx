@@ -9,11 +9,7 @@ import { formatDateTime } from "@/lib/utils";
 import Collection from "@/components/shared/Collection";
 import { SearchParamProps } from "@/types";
 import CheckoutButton from "@/components/shared/CheckoutButton";
-// type paramsType = {
-//   params: {
-//     id: string;
-//   };
-// };
+
 const EventDetail = async ({
   params: { id },
   searchParams,
@@ -98,9 +94,9 @@ const EventDetail = async ({
           emptyTitle="No Events Found"
           emptyStateSubtext="Come back later"
           collectionType="All_Events"
-          limit={6}
+          limit={3}
           page={1}
-          total={2}
+          total={relatedEvents?.totalPages}
           urlPramasName=""
         />
       </section>

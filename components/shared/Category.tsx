@@ -53,7 +53,7 @@ const Category = () => {
           <SelectItem
             key={category._id}
             className="select-item p-regular-14"
-            value={category._id}
+            value={category.name}
           >
             {category.name}
           </SelectItem>
