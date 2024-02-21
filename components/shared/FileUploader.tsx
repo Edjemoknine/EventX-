@@ -16,7 +16,7 @@ const FileUploader = ({
   imageUrl,
   setFiles,
 }: FileUploaderProps) => {
-  const onDrop = useCallback((acceptedFiles) => {
+  const onDrop = useCallback((acceptedFiles: any) => {
     setFiles(acceptedFiles);
     onFieldeChange(convertFileToUrl(acceptedFiles[0]));
   }, []);
