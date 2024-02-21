@@ -55,7 +55,7 @@ export default async function Home() {
           limit={6}
           page={1}
           total={2}
-          urlParams=""
+          urlPramasName=""
         />
       </section>
     </>
