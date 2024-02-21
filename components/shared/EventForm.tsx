@@ -29,8 +29,8 @@ import { IEvent } from "@/lib/database/schema/event.model";
 type FormProps = {
   userId: string;
   type: "Create" | "Update";
-  event: IEvent;
-  eventId: string;
+  event?: IEvent;
+  eventId?: string;
 };
 
 const EventForm = ({ userId, type, event, eventId }: FormProps) => {
@@ -84,7 +84,11 @@ const EventForm = ({ userId, type, event, eventId }: FormProps) => {
       // }
       try {
         const upEvent = await updateEvent({
-          event: { ...values, imageUrl: uploadImageUrl, _id: eventId },
+          event: {
+            ...values,
+            imageUrl: uploadImageUrl,
+            _id: eventId as string,
+          },
           userId,
 
           path: `/events/${eventId}`,
