@@ -1,6 +1,8 @@
 import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
 import { getEventsByUser } from "@/lib/actions/event.action";
+import { getOrdersByUser } from "@/lib/actions/order.action";
+import { IOrder } from "@/lib/database/schema/order.model";
 import { auth } from "@clerk/nextjs";
 
 import Link from "next/link";
@@ -10,7 +12,8 @@ const Profile = async () => {
   const { sessionClaims } = auth();
   const userId = sessionClaims?.userId as string;
   const organizedEvents = await getEventsByUser({ userId, page: 1 });
-
+  const orders = await getOrdersByUser({ userId, page: 1 });
+  const ordersEvents = orders?.data.map((order: IOrder) => order.event) || [];
   return (
     <>
       <section className="py-5 md:py-10 bg-slate-100 ">
@@ -23,9 +26,9 @@ const Profile = async () => {
           </Button>
         </div>
       </section>
-      {/* <section className="wrapper my-6">
+      <section className="wrapper my-6">
         <Collection
-          data={relatedEvents?.data}
+          data={ordersEvents}
           emptyTitle="No Events tickets pusrched yet"
           emptyStateSubtext="No worries - plenty of exciting events to explore!"
           collectionType="My_Tickets"
@@ -34,7 +37,7 @@ const Profile = async () => {
           total={2}
           urlPramasName="ordersPage"
         />
-      </section> */}
+      </section>
       <section className="py-5 md:py-10 bg-slate-100 ">
         <div className="wrapper flex flex-col items-center justify-center sm:flex-row sm:justify-between ">
           <h3 className="h3-bold text-center md:text-left ">

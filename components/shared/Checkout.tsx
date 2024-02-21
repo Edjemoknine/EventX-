@@ -40,7 +40,7 @@ const Checkout = ({ event, userId }: CheckoutType) => {
     router.push(chek!);
   };
   return (
-    <form action={onCheckout}>
+    <form action={onCheckout} method="post">
       <Button type="submit" size={"lg"} role="link">
         {event.isFree ? "Get Ticket" : "By Ticket"}
       </Button>
