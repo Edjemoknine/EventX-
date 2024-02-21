@@ -1,7 +1,6 @@
 import stripe from "stripe";
 import { NextResponse } from "next/server";
-import { checkoutOrder, createOrder } from "@/lib/actions/order.action";
-// import { createOrder } from "@/lib/actions/order.actions";
+import { createOrder } from "@/lib/actions/order.action";
 
 export async function POST(request: Request) {
   const body = await request.text();
